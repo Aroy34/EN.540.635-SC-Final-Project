@@ -1,41 +1,44 @@
+
 # EN.540.635-SC-Final-Project
 
 ## Description
-
+This project involves the development of machine learning models to analyze and predict data. It includes implementations of a Neural Network and a Random Forest model, integrated into a main script that handles data processing, model training, and user interactions.
 
 ## Data
+The data for the project is sourced from the `matminer` datasets, used for training both the Neural Network and Random Forest models.
 
 ## Codes
 
-## Building ML Model
+### main.py
+The main script of the project, responsible for integrating various components. It handles user interactions, data processing, and model operations. It utilizes libraries like `torch`, `numpy`, `pandas`, and `matplotlib`, and orchestrates the workflow involving neural network and random forest models.
 
-- python 
-- python rf_shear_modulus.py
+### neural_network.py
+This script is dedicated to building, training, and evaluating a Neural Network model. It includes data preprocessing, model construction, training phases, and performance evaluation. Libraries such as `torch`, `pandas`, `matplotlib`, and `sklearn` are used.
+
+### random_forest.py
+This script focuses on the Random Forest model. It handles data preprocessing, training, and evaluating the model's performance. It uses libraries like `pandas`, `sklearn`, and `matplotlib` and assesses the model using metrics like mean squared error and R2 score.
+
+## Building ML Model
+- Python 
+- `python rf_shear_modulus.py` (assumed to be an example command, needs to be updated based on actual usage)
 
 ## ML Model Prediction
-
-- python rf_prediction.py
-
-
+- Python 
+- `python rf_prediction.py` (assumed to be an example command, needs to be updated based on actual usage)
 
 ## Algorithm
 
-## Neural Network
+### Neural Network
+The Neural Network model uses layers, activation functions, and optimization techniques suitable for the data. Detailed implementation is in `neural_network.py`.
 
-- sdasda
-
-## Random Forest
-
-- asdad
+### Random Forest
+The Random Forest model is implemented using sklearn's RandomForestRegressor, with detailed configuration and evaluation in `random_forest.py`.
 
 ## How to Use
-
-- asdasdas
+Instructions on how to use the scripts and models can be added here, including command line examples and expected inputs and outputs.
 
 ## Citation
-
-
+Appropriate citations and references related to the data, algorithms, and libraries used in the project can be added here.
 
 # Environment
-
-- python 3
+- Python 3
