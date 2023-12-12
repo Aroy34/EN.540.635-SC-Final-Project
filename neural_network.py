@@ -44,17 +44,13 @@ class ImprovedNeuralNet(nn.Module):
 
 
 def train_load_model(data_set, target_variable, features_to_drop):
-    # Load dataset
     df = load_dataset(data_set)
 
-    # Prepare the features and target variable
     y = df[target_variable].values
     X = df.drop(features_to_drop, axis=1)
 
-    # Define input_size
     input_size = X.shape[1]
 
-    # Check if the model file exists
     model_save_path = f"{data_set}_neural_network_model.pth"
     scaler_save_path = f"{data_set}_model_scaler.joblib"
     if os.path.isfile(model_save_path) and os.path.isfile(scaler_save_path):
@@ -69,7 +65,6 @@ def train_load_model(data_set, target_variable, features_to_drop):
         # Split the data into training and testing sets
         X_train, X_test, y_train, y_test = train_test_split(X.values, y, test_size=0.33, random_state=1)
 
-        # Normalize the features
         scaler = StandardScaler()
         X_train = scaler.fit_transform(X_train)
         X_test = scaler.transform(X_test)
@@ -80,13 +75,11 @@ def train_load_model(data_set, target_variable, features_to_drop):
         y_train = torch.tensor(y_train, dtype=torch.float32)
         y_test = torch.tensor(y_test, dtype=torch.float32)
 
-        # Create datasets and dataloaders
         train_data = TensorDataset(X_train, y_train)
         test_data = TensorDataset(X_test, y_test)
         train_loader = DataLoader(train_data, batch_size=64, shuffle=True)
         test_loader = DataLoader(test_data, batch_size=64)
         
-        # Initialize the improved model
         improved_model = ImprovedNeuralNet(X_train.shape[1])
 
         # Loss function
@@ -103,12 +96,10 @@ def train_load_model(data_set, target_variable, features_to_drop):
                 outputs = improved_model(inputs)
                 loss = criterion(outputs.squeeze(), targets)
 
-                # Backward and optimize
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
 
-            # Print loss every 10 epochs (or choose a frequency that suits your patience)
             if (epoch+1) % 10 == 0:
                 print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}')
 
@@ -118,13 +109,11 @@ def train_load_model(data_set, target_variable, features_to_drop):
             y_train_pred = improved_model(X_train).squeeze()
             y_test_pred = improved_model(X_test).squeeze()
 
-        # Convert predictions to numpy for plotting
         y_train_pred = y_train_pred.numpy()
         y_test_pred = y_test_pred.numpy()
         y_train = y_train.numpy()
         y_test = y_test.numpy()
 
-        # Plot training data predictions
         plt.figure(figsize=(10, 5))
         plt.subplot(1, 2, 1)
         plt.plot(y_train, 'r', label='Actual')
@@ -132,7 +121,6 @@ def train_load_model(data_set, target_variable, features_to_drop):
         plt.title('Training Data')
         plt.legend()
 
-        # Plot testing data predictions
         plt.subplot(1, 2, 2)
         plt.plot(y_test, 'r', label='Actual')
         plt.plot(y_test_pred, 'b', label='Predicted')
@@ -142,13 +130,11 @@ def train_load_model(data_set, target_variable, features_to_drop):
         plt.tight_layout()
         plt.show()
 
-        # Calculate and print the RMSE
         train_rmse = np.sqrt(mean_squared_error(y_train, y_train_pred))
         test_rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
         print("Train RMSE:", train_rmse)
         print("Test RMSE:", test_rmse)
 
-        # Saving the model
         torch.save(improved_model.state_dict(), model_save_path)
         dump(scaler, scaler_save_path)
     

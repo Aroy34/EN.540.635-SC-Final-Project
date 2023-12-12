@@ -15,26 +15,21 @@ input_size = neural_network.train_load_model("steel_strength","yield strength",[
 random_forest.train_load_model("steel_strength","yield strength",['formula', 'yield strength', 'tensile strength', 'elongation'])
 
 
-# Specify the paths to your saved models and scaler
 model_nn_path = f"{data_set}_neural_network_model.pth"
 model_rf_path = f"{data_set}_rf_model.joblib"
 scaler_path = f"{data_set}_model_scaler.joblib"
 
-# Load the models and the scaler
 scaler = load(scaler_path)
 
 
-# Load Neural Network Model
 print(input_size)
 
 nn_model = ImprovedNeuralNet(input_size)
 nn_model.load_state_dict(torch.load(model_nn_path))
 nn_model.eval()
 
-# Load Random Forest Model
 rf_model = load(model_rf_path)
 
-# Function to generate a random composition
 def random_composition():
     """Generate a random composition within specified bounds."""
     composition = {
