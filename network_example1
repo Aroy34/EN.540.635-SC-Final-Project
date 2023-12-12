@@ -1,0 +1,40 @@
+// Neural Network - Example 1
+digraph {
+	rankdir=LR
+	node [shape=circle]
+	subgraph cluster_0 {
+		color=white
+		label="layer 1 (Input layer)"
+		y1
+		y2
+		y3
+		y4
+	}
+	subgraph cluster_1 {
+		color=white
+		label="layer 2 (hidden layer)"
+		a12
+		a22
+		a32
+	}
+	subgraph cluster_2 {
+		color=white
+		label="layer 3 (output layer)"
+		O
+	}
+	y1 -> a12
+	y1 -> a22
+	y1 -> a32
+	y2 -> a12
+	y2 -> a22
+	y2 -> a32
+	y3 -> a12
+	y3 -> a22
+	y3 -> a32
+	y4 -> a12
+	y4 -> a22
+	y4 -> a32
+	a12 -> O
+	a22 -> O
+	a32 -> O
+}

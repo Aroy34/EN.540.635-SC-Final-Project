@@ -1,0 +1,4 @@
+Dataset: steel_strength
+Target Columns: yield strength
+Columns to Drop: formula, yield strength, tensile strength, elongation
+

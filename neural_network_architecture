@@ -1,0 +1,22 @@
+// Neural Network Architecture
+digraph {
+	I [label="Input Layer
+(13 features)"]
+	L1 [label="Linear(128)
++ BatchNorm1d
++ ReLU"]
+	D [label="Dropout(0.2)"]
+	L2 [label="Linear(64)
++ BatchNorm1d
++ ReLU"]
+	L3 [label="Linear(32)
++ ReLU"]
+	O [label="Output Layer
+(1 neuron)"]
+	I -> L1
+	L1 -> D
+	D -> L2
+	L2 -> L3
+	L3 -> O
+	rankdir=LR size="8,5"
+}
