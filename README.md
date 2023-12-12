@@ -20,11 +20,11 @@ This script focuses on the Random Forest model. It handles data preprocessing, t
 
 ## Building ML Model
 - Python 
-- `python rf_shear_modulus.py` (assumed to be an example command, needs to be updated based on actual usage)
+- `.py` 
 
 ## ML Model Prediction
 - Python 
-- `python rf_prediction.py` (assumed to be an example command, needs to be updated based on actual usage)
+- `python .py` 
 
 ## Algorithm
 
