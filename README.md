@@ -1,11 +1,11 @@
 # EN.540.635-SC-Final-Project
 
-# Description
+## Description
 
 
-# Data
+## Data
 
-# Codes
+## Codes
 
 ## Building ML Model
 
@@ -18,7 +18,7 @@
 
 
 
-# Algorithm
+## Algorithm
 
 ## Neural Network
 
@@ -28,11 +28,11 @@
 
 - asdad
 
-# How to Use
+## How to Use
 
 - asdasdas
 
-# Citation
+## Citation
 
 
 
