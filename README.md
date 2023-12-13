@@ -19,22 +19,24 @@ This script is dedicated to building, training, and evaluating a Neural Network 
 This script focuses on the Random Forest model. It handles data preprocessing, training, and evaluating the model's performance. It uses libraries like `pandas`, `sklearn`, and `matplotlib` and assesses the model using metrics like mean squared error and R2 score.
 
 ## ML Model
-- ![Random Forest Model](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Random%20Forest%20Model.png)
-- `.py` 
+![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/neural_network_architecture.png)
+![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/steel_strength_decision_tree.png)
 
-## ML Model Prediction
-ADD Images
 
 ## Algorithm
 
 ### Neural Network
-The Neural Network model uses layers, activation functions, and optimization techniques suitable for the data. Detailed implementation is in `neural_network.py`.
+![Random Forest Model](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Random%20Forest%20Model.png)
 
 ### Random Forest
-The Random Forest model is implemented using sklearn's RandomForestRegressor, with detailed configuration and evaluation in `random_forest.py`.
+![Neural Model](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Random%20Forest%20Model.png)
 
 ## How to Use
 Instructions on how to use the scripts and models can be added here, including command line examples and expected inputs and outputs.
+
+## ML Model Prediction
+![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Predicted%20Composition%20-%20Neural%20Network.png)
+![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Predicted%20Composition%20-%20Random%20Forest.png)
 
 ## Citation
 Appropriate citations and references related to the data, algorithms, and libraries used in the project can be added here.
