@@ -6,8 +6,10 @@ This project involves the development of machine learning models to analyze and 
 
 ## Data
 The data for the project is sourced from the `matminer` datasets, used for training both the Neural Network and Random Forest models.
+NOTE: Dataset will be downloaded on the go
 
 ## Codes
+Following scripts make up the working code
 
 ### main.py
 The main script of the project, responsible for integrating various components. It handles user interactions, data processing, and model operations. It utilizes libraries like `torch`, `numpy`, `pandas`, and `matplotlib`, and orchestrates the workflow involving neural network and random forest models.
@@ -18,7 +20,13 @@ This script is dedicated to building, training, and evaluating a Neural Network 
 ### random_forest.py
 This script focuses on the Random Forest model. It handles data preprocessing, training, and evaluating the model's performance. It uses libraries like `pandas`, `sklearn`, and `matplotlib` and assesses the model using metrics like mean squared error and R2 score.
 
+~~~
+Model Case - Prediction of 'yield strength' and then then optimising the composition to get teh maximum yield strength
+~~~
+
 ## ML Model
+Following are the architecture of the ML model for Neural Network and Random Forest repectively.
+
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/neural_network_architecture.png)
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/steel_strength_decision_tree.png)
 
@@ -32,11 +40,14 @@ This script focuses on the Random Forest model. It handles data preprocessing, t
 ![Neural Model](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Random%20Forest%20Model.png)
 
 ## How to Use
-Instructions on how to use the scripts and models can be added here, including command line examples and expected inputs and outputs.
+![Image]()
+![Image]()
+![Image]()
 
 ## ML Model Prediction
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Predicted%20Composition%20-%20Neural%20Network.png)
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Predicted%20Composition%20-%20Random%20Forest.png)
+![Image]()
 
 ## Citation
 Appropriate citations and references related to the data, algorithms, and libraries used in the project can be added here.
