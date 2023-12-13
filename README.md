@@ -53,13 +53,18 @@ Model Case - Prediction of 'yield strength' and then then optimising the composi
 ~~~
 
 ## How to use the GUI
+The GUI is a simple and the sole purpose of the GUi is to select different database and then identify the target variables
+
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/img_1.png)
+
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/img_2.png)
 
 ## ML Model
 Following are the architecture of the ML model for Neural Network and Random Forest repectively.
-
+Neural Network:
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/neural_network_architecture.png)
+
+Random Forest:
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/steel_strength_decision_tree.png)
 
 ### Neural Network
