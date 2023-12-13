@@ -5,7 +5,7 @@
 This project involves the development of machine learning models to analyze and predict properties from a selected dataset. It includes implementations of a Neural Network and a Random Forest model, integrated into a main script that handles data processing, model training, and user interactions.
 
 ## Data
-The data for the project is sourced from the `matminer` datasets, used for training both the Neural Network and Random Forest models.
+The data for the project is sourced from the `matminer` datasets (https://hackingmaterials.lbl.gov/matminer/dataset_summary.html), used for training both the Neural Network and Random Forest models.
 NOTE: Dataset will be downloaded on the go
 
 ## Codes
