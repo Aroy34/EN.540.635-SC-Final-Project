@@ -24,46 +24,37 @@ This script focuses on the Random Forest model. It handles data preprocessing, t
 
 ### Start of the Program
 - **Load Data**:
-  - Get data from a source called `matminer`.
+  - Get data from `matminer`.
+  - Generate the features if necessary, identify the target values and the fatueres which can help in prediction
   - Prepare the data by splitting it into two parts: one for training (learning) and one for testing.
 
-### Decide Which Model to Use
-- Ask the user or decide in the code whether to use a Neural Network or a Random Forest Model.
-
-### If Neural Network is Chosen
+### Neural Network model
 1. **Build the Neural Network**:
-   - Create a structure of layers, mimicking a brain's connections.
+   - Create a structure of layers
    - Set up the number of layers and their connections.
 2. **Train the Neural Network**:
    - Feed the training data into the network.
    - Allow the network to adjust itself based on this data.
 3. **Test the Neural Network**:
    - Use the test data to evaluate how well the network learned.
-   - Measure its performance with specific metrics.
+   - Measure its performance and show it in the form of plot
 
-### If Random Forest is Chosen
+### Random Forest model
 1. **Set Up the Random Forest**:
-   - Prepare a group of decision trees (the 'forest').
-   - Configure the formation of these trees and their quantity.
+   - Prepare a group of decision trees.
 2. **Train the Random Forest**:
    - Train the forest using the prepared training data.
 3. **Test the Random Forest**:
    - Assess the model's learning using the test data.
-   - Use metrics like mean squared error and R2 score for evaluation.
-
-### Integration and User Interaction
-- **User Interface**:
-  - Provide options for selecting the model type.
-  - Initiate the model training and testing process.
-- **Display Results**:
-  - Show the outcomes like model predictions and performance scores.
-
-### End of the Program
-- Conclude the program after displaying results and completing all processes.
+   - Calculate mean squared error and R^2 score for evaluation.
 
 ~~~
 Model Case - Prediction of 'yield strength' and then then optimising the composition to get the maximum yield strength
 ~~~
+
+## How to use the GUI
+![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/img_1.png)
+![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/img_2.png)
 
 ## ML Model
 Following are the architecture of the ML model for Neural Network and Random Forest repectively.
@@ -76,11 +67,6 @@ Following are the architecture of the ML model for Neural Network and Random For
 
 ### Random Forest
 ![Neural Model](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Random%20Forest%20Model.png)
-
-## How to Use
-![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/img_1.png)
-![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/img_2.png)
-
 
 ## ML Model Prediction
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Predicted%20Composition%20-%20Neural%20Network.png)
