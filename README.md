@@ -2,7 +2,7 @@
 # EN.540.635-SC-Final-Project
 
 ## Description
-This project involves the development of machine learning models to analyze and predict data. It includes implementations of a Neural Network and a Random Forest model, integrated into a main script that handles data processing, model training, and user interactions.
+This project involves the development of machine learning models to analyze and predict properties from a selected dataset. It includes implementations of a Neural Network and a Random Forest model, integrated into a main script that handles data processing, model training, and user interactions.
 
 ## Data
 The data for the project is sourced from the `matminer` datasets, used for training both the Neural Network and Random Forest models.
@@ -18,13 +18,12 @@ This script is dedicated to building, training, and evaluating a Neural Network 
 ### random_forest.py
 This script focuses on the Random Forest model. It handles data preprocessing, training, and evaluating the model's performance. It uses libraries like `pandas`, `sklearn`, and `matplotlib` and assesses the model using metrics like mean squared error and R2 score.
 
-## Building ML Model
-- Python 
+## ML Model
+- ![image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Random%20Forest%20Model.png)\
 - `.py` 
 
 ## ML Model Prediction
-- Python 
-- `python .py` 
+ADD Images
 
 ## Algorithm
 
