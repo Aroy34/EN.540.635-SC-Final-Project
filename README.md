@@ -20,6 +20,47 @@ This script is dedicated to building, training, and evaluating a Neural Network 
 ### random_forest.py
 This script focuses on the Random Forest model. It handles data preprocessing, training, and evaluating the model's performance. It uses libraries like `pandas`, `sklearn`, and `matplotlib` and assesses the model using metrics like mean squared error and R2 score.
 
+$# Pseudocode
+
+### Start of the Program
+- **Load Data**:
+  - Get data from a source called `matminer`.
+  - Prepare the data by splitting it into two parts: one for training (learning) and one for testing.
+
+### Decide Which Model to Use
+- Ask the user or decide in the code whether to use a Neural Network or a Random Forest Model.
+
+### If Neural Network is Chosen
+1. **Build the Neural Network**:
+   - Create a structure of layers, mimicking a brain's connections.
+   - Set up the number of layers and their connections.
+2. **Train the Neural Network**:
+   - Feed the training data into the network.
+   - Allow the network to adjust itself based on this data.
+3. **Test the Neural Network**:
+   - Use the test data to evaluate how well the network learned.
+   - Measure its performance with specific metrics.
+
+### If Random Forest is Chosen
+1. **Set Up the Random Forest**:
+   - Prepare a group of decision trees (the 'forest').
+   - Configure the formation of these trees and their quantity.
+2. **Train the Random Forest**:
+   - Train the forest using the prepared training data.
+3. **Test the Random Forest**:
+   - Assess the model's learning using the test data.
+   - Use metrics like mean squared error and R2 score for evaluation.
+
+### Integration and User Interaction
+- **User Interface**:
+  - Provide options for selecting the model type.
+  - Initiate the model training and testing process.
+- **Display Results**:
+  - Show the outcomes like model predictions and performance scores.
+
+### End of the Program
+- Conclude the program after displaying results and completing all processes.
+
 ~~~
 Model Case - Prediction of 'yield strength' and then then optimising the composition to get the maximum yield strength
 ~~~
@@ -29,9 +70,6 @@ Following are the architecture of the ML model for Neural Network and Random For
 
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/neural_network_architecture.png)
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/steel_strength_decision_tree.png)
-
-
-## Algorithm
 
 ### Neural Network
 ![Random Forest Model](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Neural%20Network%20Model.png)
