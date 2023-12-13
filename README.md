@@ -20,7 +20,7 @@ This script is dedicated to building, training, and evaluating a Neural Network 
 ### random_forest.py
 This script focuses on the Random Forest model. It handles data preprocessing, training, and evaluating the model's performance. It uses libraries like `pandas`, `sklearn`, and `matplotlib` and assesses the model using metrics like mean squared error and R2 score.
 
-$# Pseudocode
+## Pseudocode
 
 ### Start of the Program
 - **Load Data**:
