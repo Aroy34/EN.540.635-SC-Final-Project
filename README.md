@@ -19,7 +19,7 @@ This script is dedicated to building, training, and evaluating a Neural Network 
 This script focuses on the Random Forest model. It handles data preprocessing, training, and evaluating the model's performance. It uses libraries like `pandas`, `sklearn`, and `matplotlib` and assesses the model using metrics like mean squared error and R2 score.
 
 ## ML Model
-- ![image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Random%20Forest%20Model.png)\
+- ![Random Forest Model](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Random%20Forest%20Model.png)
 - `.py` 
 
 ## ML Model Prediction
