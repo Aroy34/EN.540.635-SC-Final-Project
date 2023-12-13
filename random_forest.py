@@ -1,6 +1,5 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
 from matminer.datasets import load_dataset
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.ensemble import RandomForestRegressor
@@ -14,29 +13,28 @@ from joblib import dump, load
 import os
 
 
-
 def train_load_model(data_set, target_variable, features_to_drop):
     """Loads or trains a Random Forest model for material property prediction.
 
-    If a model is already saved, it loads that model; otherwise, it trains a new model. This function also plots 
+    If a model is already saved, it loads that model; otherwise,
+    it trains a new model. This function also plots
     the performance of the model on training and testing data.
 
     Args:
         data_set (str): The name of the dataset to use.
         target_variable (str): The target variable to predict.
-        features_to_drop (list): List of feature columns to drop from the dataset.
+        features_to_drop (list): List of feature columns
+        to drop from the dataset.
     """
     df = load_dataset(data_set)
 
     y = df[target_variable].values
     X = df.drop(features_to_drop, axis=1)
 
-    # scaler_save_path = f"{data_set}_model_scaler.joblib"
     rf_model_save_path = f"{data_set}_rf_model.joblib"
 
     if os.path.isfile(rf_model_save_path):
         print("Loading the existing Random Forest model...")
-        # scaler = load(scaler_save_path)
         # https://stackoverflow.com/questions/20662023/save-python-random-forest-model-to-file
         rf_model = load(rf_model_save_path)
     else:
@@ -46,7 +44,7 @@ def train_load_model(data_set, target_variable, features_to_drop):
             X, y, test_size=0.33, random_state=1)
         rf_model = RandomForestRegressor(n_estimators=100, random_state=1)
         # We can try with SVM but parameters needs to be optimized
-        # svm_model = SVR(kernel='rbf', C=1.0, epsilon=0.1, gamma='scale') 
+        # svm_model = SVR(kernel='rbf', C=1.0, epsilon=0.1, gamma='scale')
         rf_model.fit(X_train, y_train.ravel())
 
         y_train_pred = rf_model.predict(X_train)
@@ -98,14 +96,11 @@ def train_load_model(data_set, target_variable, features_to_drop):
         test_rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
         print("Train RMSE:", train_rmse)
         print("Test RMSE:", test_rmse)
-        
+
         # https://stackoverflow.com/questions/20662023/save-python-random-forest-model-to-file
         dump(rf_model, rf_model_save_path)
-        # dump(scaler, scaler_save_path)
-        
-        
 
-    print("Model training complete. Model and scaler saved.")
+    print("Model training complete. Model saved.")
 
 
 if __name__ == "__main__":

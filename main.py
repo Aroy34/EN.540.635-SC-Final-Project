@@ -11,18 +11,20 @@ import neural_network
 import random_forest
 from neural_network import NeuralNet
 
-###### Link ######
+
 class Utility:
     """Class to handle user interactions for selecting the datasets.
 
     Attributes:
         selections (dict): to store user selections for datasets.
-        datasets (list): to store list of available datasets .
+        datasets (list): to store list of available datasets.
 
     Methods:
-        dataset_button_clicked(dataset_name): deccides what to do when a dataset button is clicked.
+        dataset_button_clicked(dataset_name): deccides what
+        to do when a dataset button is clicked.
         user_interface(): Sets up the main user interface.
     """
+
     def __init__(self):
         self.selections = {}
         self.datasets = [
@@ -30,12 +32,13 @@ class Utility:
             "matbench_steels",
             "steel_strength",
             "superconductivity2018",
-            "More Datasets To Come...",]
+            "More Datasets To Come...",
+        ]
 
     def dataset_button_clicked(self, dataset_name, root_window):
-        """Deccides what to do when a dataset button is clicked. 
+        """Deccides what to do when a dataset button is clicked.
 
-        Loads the selected dataset from matminer 
+        Loads the selected dataset from matminer
         and opens a new window for selcting the target and dropped columns.
 
         Args:
@@ -64,8 +67,8 @@ class Utility:
             tk.Label(new_window, text=col).grid(row=i + 1, column=0)
 
             # Checkbox for target column
-            chk_box_target = tk.Checkbutton(
-                new_window, variable=target_vars[col])
+            chk_box_target = tk.Checkbutton(new_window,
+                                            variable=target_vars[col])
             chk_box_target.grid(row=i + 1, column=1)
 
             # Checkbox for column to drop
@@ -74,9 +77,10 @@ class Utility:
 
         def apply():
             """Decides what to do when user clicks ont he 'Apply'
-            Reads the boxes which have been ticked for each column, updates the
-            `selections` dictionary, and writes these selections to a text file.
-            
+            Reads the boxes which have been ticked for
+            each column, updates the `selections` dictionary, and
+            writes these selections to a text file.
+
             Closes the all the windows.
             """
 
@@ -95,8 +99,10 @@ class Utility:
                 "Target": ", ".join(target_columns),
                 "To be Dropped": ", ".join(columns_to_drop),
             }
-            print(f"Selections for {dataset_name}:\
-                {self.selections[dataset_name]}")
+            print(
+                f"Selections for {dataset_name}:\
+                {self.selections[dataset_name]}"
+            )
 
             # Save the selections to a text file
             with open("dataset_selections.txt", "w") as file:
@@ -115,7 +121,8 @@ class Utility:
     def user_interface(self):
         """Starts thw page and displays the main user interface window.
 
-        The window lists available datasets as buttons, user can only seelct one dataset
+        The window lists available datasets as buttons,
+        user can only seelct one dataset
         """
         root = tk.Tk()
         root.title("Prediction of Material Properties")
@@ -124,34 +131,37 @@ class Utility:
             button = tk.Button(
                 root,
                 text=dataset_name,
-                command=lambda n=dataset_name, r=root: self.dataset_button_clicked(n, r),
-            )
+                command=lambda n=dataset_name, r=root:
+                    self.dataset_button_clicked(n, r),)
             button.pack()
 
         root.mainloop()
-    
 
 
 class ReadUserInput:
     """A class to read user selections from a file.
 
     Attributes:
-        filename (str): The name of the file containing the selections user made
+        filename (str): The name of the file containing
+        the selections user made
 
     Methods:
         read_data(): Reads the name of selected dataset,
         target columns, and columns to drop for the ML model
     """
+
     def __init__(self, filename):
         self.filename = filename
 
     def read_data(self):
         """Reads the user data selections from the specified file.
 
-        Parses the file for dataset name, target columns, and columns to be dropped.
+        Parses the file for dataset name, target columns,
+        and columns to be dropped.
 
         Returns:
-            lists: containing the dataset name, target column names and list of columns to be dropped.
+            lists: containing the dataset name, target
+            column names and list of columns to be dropped.
         """
         data_set = []
         target = []
@@ -178,14 +188,18 @@ class ReadUserInput:
 
 
 class CompositionGenerator:
-    """Generates random compositions for material analysis. with higher conc. for Nickel and Chromiums
+    """Generates random compositions for material
+    analysis. with higher conc. for Nickel and Chromiums
 
     Attributes:
-        feature_columns (list): A list of element names to be used in composition generation.
+        feature_columns (list): A list of element
+        names to be used in composition generation.
 
     Methods:
-        random_composition(): Generates a random composition using the defined elements.
+        random_composition(): Generates a random
+        composition using the defined elements.
     """
+
     def __init__(self):
         self.feature_columns = [
             "c",
@@ -207,7 +221,8 @@ class CompositionGenerator:
         """Generates a random composition for material analysis.
 
         Returns:
-            dict: dictionary representing the material composition with elements as keys and their concentrations as values.
+            dict: dictionary representing the material composition
+            with elements as keys and their concentrations as values.
         """
         composition = {}
         for element in self.feature_columns:
@@ -224,28 +239,32 @@ class NeuralNetworkPredictor:
 
     Attributes:
         nn_model: The neural network model for prediction.
-        feature_columns (list): A list of feature columns for input to the model.
+        feature_columns (list): A list of feature columns
+        for input to the model.
 
     Methods:
-        predict_yield_strength(composition): Predicts the yield strength of a given material composition.
+        predict_yield_strength(composition): Predicts the
+        yield strength of a given material composition.
     """
+
     def __init__(self, nn_model, feature_columns):
         self.nn_model = nn_model
         self.feature_columns = feature_columns
 
     def predict_yield_strength(self, composition):
-        """Predicts the yield strength of a given material composition using a neural network model.
+        """Predicts the yield strength of a given material
+        composition using a neural network model.
 
         Args:
-            composition (dict): A dictionary containing the material composition.
+            composition (dict): A dictionary containing
+            the material composition.
 
         Returns:
             float: The predicted yield strength of the material.
         """
-        
+
         input_df = pd.DataFrame([composition])
 
-        # input_normalized = self.scaler.transform(input_df)
         input_tensor = torch.tensor(input_df.values, dtype=torch.float32)
 
         # Evaluate the neural network model
@@ -262,20 +281,25 @@ class RandomForestPredictor:
 
     Attributes:
         rf_model: The Random Forest model for prediction.
-        feature_columns (list): A list of feature columns for input to the model.
+        feature_columns (list): A list of feature columns
+        for input to the model.
 
     Methods:
-        predict_yield_strength(composition): Predicts the yield strength of a given material composition.
+        predict_yield_strength(composition): Predicts the
+        yield strength of a given material composition.
     """
+
     def __init__(self, rf_model, feature_columns):
         self.rf_model = rf_model
         self.feature_columns = feature_columns
 
     def predict_yield_strength(self, composition):
-        """Predicts the yield strength of a given material composition using a Random Forest model.
+        """Predicts the yield strength of a given material
+        composition using a Random Forest model.
 
         Args:
-            composition (dict): A dictionary containing the material composition.
+            composition (dict): A dictionary containing
+            the material composition.
 
         Returns:
             float: The predicted yield strength of the material.
@@ -290,20 +314,26 @@ class RandomForestPredictor:
 
 # Define a class to optimize yield strength predictions
 class YieldStrengthOptimizer:
-    """Optimizes yield strength predictions using neural network and random forest models.
+    """Optimizes yield strength predictions using
+    neural network and random forest models.
 
     Attributes:
-        best_strength_nn (float): Best yield strength predicted by neural network.
-        best_strength_rf (float): Best yield strength predicted by random forest.
-        best_composition_nn (dict): Best composition as predicted by neural network.
-        best_composition_rf (dict): Best composition as predicted by random forest.
+        best_strength_nn (float): Best yield strength
+        predicted by neural network.
+        best_strength_rf (float): Best yield strength
+        predicted by random forest.
+        best_composition_nn (dict): Best composition
+        as predicted by neural network.
+        best_composition_rf (dict): Best composition
+        as predicted by random forest.
 
     Methods:
-        find_best_composition(): Finds the best composition for yield strength using both models.
+        find_best_composition(): Finds the best
+        composition for yield strength using both models.
     """
 
-    def __init__(self,
-                 num_samples, composition_generator,
+    def __init__(self, num_samples,
+                 composition_generator,
                  nn_predictor, rf_predictor):
         self.num_samples = num_samples
         self.composition_generator = composition_generator
@@ -313,15 +343,17 @@ class YieldStrengthOptimizer:
         self.best_strength_rf = 0
         self.best_composition_nn = []
         self.best_composition_rf = []
-    
-    ###### Link ######
-    def find_best_composition(self):
-        """Finds the best composition for yield strength using both neural network and random forest models.
 
-        Iterates over a number of random compositions, predicts their yield strength, and identifies the best one.
+    def find_best_composition(self):
+        """Finds the best composition for yield strength using
+        both neural network and random forest models.
+
+        Iterates over a number of random compositions, predicts
+        their yield strength, and identifies the best one.
 
         Returns:
-            list: a list containing the best compositions and their corresponding strengths as predicted by both models.
+            list: a list containing the best compositions
+            and their corresponding strengths as predicted by both models.
         """
         strengths_nn = []
         strengths_rf = []
@@ -344,15 +376,18 @@ class YieldStrengthOptimizer:
                 self.best_strength_rf = strength_rf
                 self.best_composition_rf = composition
 
-        return (self.best_composition_nn,
-                self.best_strength_nn,
-                self.best_composition_rf,
-                self.best_strength_rf)
+        return (
+            self.best_composition_nn,
+            self.best_strength_nn,
+            self.best_composition_rf,
+            self.best_strength_rf,
+        )
 
 
 # Define a class to plot the composition comparison
 class Plotter:
-    """Plots comparisons of material compositions as predicted by different models.
+    """Plots comparisons of material compositions
+    as predicted by different models.
 
     Attributes:
         elements (list): A list of elements in the composition.
@@ -360,8 +395,10 @@ class Plotter:
         values_rf (list): Predicted values of elements by the Random Forest.
 
     Methods:
-        plot_composition_comparison(): Plots a comparison of compositions from both models.
+        plot_composition_comparison(): Plots a comparison
+        of compositions from both models.
     """
+
     def __init__(self, elements, values_nn, values_rf):
         self.elements = elements
         self.values_nn = values_nn
@@ -370,7 +407,8 @@ class Plotter:
     def plot_composition_comparison(self):
         """Plots a comparison of material compositions as predicted by models.
 
-        Generates bar charts for the element concentrations in the best compositions predicted by each model.
+        Generates bar charts for the element concentrations
+        in the best compositions predicted by each model.
         """
         index = np.arange(len(self.elements))
 
@@ -402,12 +440,13 @@ if __name__ == "__main__":
     data_set, target, to_be_dropped = data_reader.read_data()
 
     # Load and train neural network and random forest models
-    input_size = neural_network.train_load_model(
-        data_set, target[0], to_be_dropped)
+    input_size = neural_network.train_load_model(data_set,
+                                                 target[0],
+                                                 to_be_dropped)
     print(input_size)
     random_forest.train_load_model(data_set, target[0], to_be_dropped)
 
-    # Load saved models and scaler
+    # Load saved models
     model_nn_path = f"{data_set}_neural_network_model.pth"
     model_rf_path = f"{data_set}_rf_model.joblib"
 
@@ -454,8 +493,10 @@ if __name__ == "__main__":
     print("Best Composition (Random Forest):", best_composition_rf)
     print("Best Predicted Yield Strength (Random Forest):", best_strength_rf)
 
-    plotter = Plotter(best_composition_nn.keys(),
-                      best_composition_nn.values(),
-                      best_composition_rf.values())
+    plotter = Plotter(
+        best_composition_nn.keys(),
+        best_composition_nn.values(),
+        best_composition_rf.values(),
+    )
 
     plotter.plot_composition_comparison()

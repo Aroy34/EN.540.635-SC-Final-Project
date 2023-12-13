@@ -4,7 +4,6 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
 from matminer.datasets import load_dataset
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
@@ -13,8 +12,9 @@ from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 import random
 
-# Neural Network with Normalization
 # https://stackoverflow.com/questions/59003591/how-to-implement-dropout-in-pytorch-and-where-to-apply-it
+
+
 class NeuralNet(nn.Module):
     """A neural network for predicting material properties.
 
@@ -55,12 +55,15 @@ class NeuralNet(nn.Module):
 def train_load_model(data_set, target_variable, features_to_drop):
     """Loads or trains a neural network model for material property prediction.
 
-    Loads an existing model if available, otherwise trains a new model. Also plots and saves the training and testing results.
+    Loads an existing model if available, otherwise
+    trains a new model. Also plots and
+    saves the training and testing results.
 
     Args:
         data_set (str): The name of the dataset to use.
         target_variable (str): The target variable to predict.
-        features_to_drop (list): List of feature columns to drop from the dataset.
+        features_to_drop (list): List of feature
+        columns to drop from the dataset.
 
     Returns:
         int: The input size for the neural network model.
@@ -73,17 +76,16 @@ def train_load_model(data_set, target_variable, features_to_drop):
     input_size = X.shape[1]
 
     model_save_path = f"{data_set}_neural_network_model.pth"
-    # scaler_save_path = f"{data_set}_model_scaler.joblib"
+
     if os.path.isfile(model_save_path):
         print("Loading the existing model...")
         improved_model = NeuralNet(input_size)
         # https://pytorch.org/tutorials/beginner/saving_loading_models.html
         improved_model.load_state_dict(torch.load(model_save_path))
         improved_model.eval()
-        # scaler = load(scaler_save_path)
     else:
         print("No existing models found.... training a new model...")
-        
+
         # https://stackoverflow.com/questions/75927752/pytorch-deeplearning
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=0.33, random_state=1
