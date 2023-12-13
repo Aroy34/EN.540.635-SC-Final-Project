@@ -70,7 +70,9 @@ Following are the architecture of the ML model for Neural Network and Random For
 
 ## ML Model Prediction
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Predicted%20Composition%20-%20Neural%20Network.png)
+
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/Predicted%20Composition%20-%20Random%20Forest.png)
+
 ![Image](https://github.com/Aroy34/EN.540.635-SC-Final-Project/blob/main/img_3.png)
 
 
