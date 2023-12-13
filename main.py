@@ -44,7 +44,7 @@ class Utility:
         Args:
             dataset_name (str): The name of the dataset selected by the user.
         """
-        # Load the dataset
+        # Lding the dataset
         df = load_dataset(dataset_name)
         print(f"Loaded dataset: {dataset_name}")
 
@@ -53,12 +53,11 @@ class Utility:
         target_vars = {}
         drop_vars = {}
 
-        # Use a for loop to populate the dictionaries
         for col in df.columns:
             target_vars[col] = tk.BooleanVar()
             drop_vars[col] = tk.BooleanVar()
 
-        # Create a grid of options
+        # Creating list of options
         tk.Label(new_window, text="Column").grid(row=0, column=0)
         tk.Label(new_window, text="Target").grid(row=0, column=1)
         tk.Label(new_window, text="To be Dropped").grid(row=0, column=2)
@@ -66,12 +65,12 @@ class Utility:
         for i, col in enumerate(df.columns):
             tk.Label(new_window, text=col).grid(row=i + 1, column=0)
 
-            # Checkbox for target column
+            # Checkbox for target
             chk_box_target = tk.Checkbutton(new_window,
                                             variable=target_vars[col])
             chk_box_target.grid(row=i + 1, column=1)
 
-            # Checkbox for column to drop
+            # Checkbox for properties to drop
             chk_box_drop = tk.Checkbutton(new_window, variable=drop_vars[col])
             chk_box_drop.grid(row=i + 1, column=2)
 
@@ -87,7 +86,7 @@ class Utility:
             target_columns = []
             columns_to_drop = []
 
-            # Setting up the tick boxes
+            # tick boxes
             for col, var in target_vars.items():
                 if var.get():
                     target_columns.append(col)
@@ -167,7 +166,7 @@ class ReadUserInput:
         target = []
         to_be_dropped = []
 
-        # Open and read the file line by line
+        # Open and read the file
         with open(self.filename, "r") as file:
             lines = file.readlines()
 
@@ -233,7 +232,6 @@ class CompositionGenerator:
         return composition
 
 
-# Define a class to predict yield strength using a neural network
 class NeuralNetworkPredictor:
     """Predicts material properties using a neural network model.
 
@@ -306,13 +304,12 @@ class RandomForestPredictor:
         """
         input_df = pd.DataFrame([composition])
 
-        # Predict using the RandomForest model
+        # Prediction
         predicted_strength = self.rf_model.predict(input_df)[0]
 
         return predicted_strength
 
 
-# Define a class to optimize yield strength predictions
 class YieldStrengthOptimizer:
     """Optimizes yield strength predictions using
     neural network and random forest models.
@@ -364,7 +361,7 @@ class YieldStrengthOptimizer:
             # Predict with Neural Network
             strength_nn = self.nn_predictor.predict_yield_strength(composition)
             strengths_nn.append(strength_nn)
-            # Bubble sort
+            # only saving the largest value
             if strength_nn > self.best_strength_nn:
                 self.best_strength_nn = strength_nn
                 self.best_composition_nn = composition
@@ -372,6 +369,7 @@ class YieldStrengthOptimizer:
             # Predict with Random Forest
             strength_rf = self.rf_predictor.predict_yield_strength(composition)
             strengths_rf.append(strength_rf)
+            # only saving the largest value
             if strength_rf > self.best_strength_rf:
                 self.best_strength_rf = strength_rf
                 self.best_composition_rf = composition
@@ -384,7 +382,6 @@ class YieldStrengthOptimizer:
         )
 
 
-# Define a class to plot the composition comparison
 class Plotter:
     """Plots comparisons of material compositions
     as predicted by different models.

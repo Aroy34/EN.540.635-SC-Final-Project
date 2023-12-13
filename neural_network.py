@@ -129,7 +129,7 @@ def train_load_model(data_set, target_variable, features_to_drop):
                     Loss: {loss.item():.4f}"
                 )
 
-        # Evaluate the model
+        # evaluating the model
         improved_model.eval()
         with torch.no_grad():
             y_train_pred = improved_model(X_train).squeeze()

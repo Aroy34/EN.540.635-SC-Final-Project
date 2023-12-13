@@ -50,17 +50,17 @@ def train_load_model(data_set, target_variable, features_to_drop):
         y_train_pred = rf_model.predict(X_train)
         y_test_pred = rf_model.predict(X_test)
 
-        # Calculate R-squared values
+        # Calculate R^2 values
         r2_train = r2_score(y_train, y_train_pred)
         r2_test = r2_score(y_test, y_test_pred)
 
-        # Calculate the min and max values for plotting the 45-degree line
+        # Calculating the min and max values for plotting straight line
         min_val = min(min(y_train), min(y_train_pred),
                       min(y_test), min(y_test_pred))
         max_val = max(max(y_train), max(y_train_pred),
                       max(y_test), max(y_test_pred))
 
-        # Plot predicted vs. actual values for training data
+        # predicted vs. actual values(training)
         plt.figure(figsize=(12, 6))
         plt.subplot(1, 2, 1)
         plt.scatter(
@@ -76,7 +76,7 @@ def train_load_model(data_set, target_variable, features_to_drop):
         plt.title("Training Data - Predicted vs. Actual [Random Forest]")
         plt.legend()
 
-        # Plot predicted vs. actual values for testing data
+        # Plot predicted vs. actual values(test)
         plt.subplot(1, 2, 2)
         plt.scatter(
             y_test, y_test_pred, alpha=0.3,
